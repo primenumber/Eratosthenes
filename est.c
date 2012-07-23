@@ -19,10 +19,10 @@ void memsetex(void* dst,void* data,size_t nmemb,size_t size)
 	{
 		size_t half = size/2;
 		memsetex(dst,data,nmemb,half);
-		memcpy(dst+half*nmemb,dst,half*nmemb);
+		memcpy((char*)dst+half*nmemb,dst,half*nmemb);
 		if(size%2)
 		{
-			memcpy(dst+(size-1)*nmemb,data,nmemb);
+			memcpy((char*)dst+(size-1)*nmemb,data,nmemb);
 		}
 	}
 }
