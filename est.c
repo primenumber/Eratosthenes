@@ -30,22 +30,24 @@ void memsetex(void* dst,void* data,size_t nmemb,size_t size)
 int main()
 {
 	int n;
+	int lendiv8;
+	int len;
 	int *list;
 	int i,j,k,l;
 	int one = 1;
 	scanf("%d",&n);
-	const int lendiv8 = n/30+1;
-	const int len = lendiv8*8;
+	lendiv8 = n/30+1;
+	len = lendiv8*8;
 	list = mem(int,len*8);
 	memsetex(list,&one,sizeof(int),len);
 	for(i = 0;i < lendiv8;i++)
 	{
 		for(j = 0;j < 8;j++)
 		{
-			if(!i && !j)continue;
 			const int p = i*30+table[j];
 			const int invp = inv[j][0] - i * inv[j][1];
 			const int loop = lendiv8 / p;
+			if(!i && !j)continue;
 			for(k = 0;k < 8;k++)
 			{
 				int depth = -table[k]*invp;
